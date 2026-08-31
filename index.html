@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Cristian R. Pochón</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- ESTILOS GENERALES Y RESETS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f6f9;
+            color: #333333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL (Flexbox) --- */
+        .cv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* --- COLUMNA IZQUIERDA (LATERAL) --- */
+        .left-column {
+            width: 32%;
+            background-color: #111a28;
+            color: #ffffff;
+            padding: 30px 20px;
+            flex-shrink: 0;
+        }
+
+        .profile-frame {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px auto;
+            border-radius: 50%;
+            border: 3px solid #00a8cc;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #00a8cc;
+            border-bottom: 2px solid #00a8cc;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-list, .skills-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            word-break: break-word;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-list li i {
+            color: #00a8cc;
+            width: 16px;
+            text-align: center;
+        }
+
+        .skills-list li {
+            background-color: #1c2a3e;
+            padding: 6px 12px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skills-list li i {
+            color: #00a8cc;
+            font-size: 0.7rem;
+        }
+
+        /* --- COLUMNA DERECHA (CONTENIDO PRINCIPAL) --- */
+        .right-column {
+            width: 68%;
+            padding: 40px 35px;
+            background-color: #ffffff;
+        }
+
+        .header-title {
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .header-title h1 {
+            font-size: 2.2rem;
+            color: #111a28;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .header-title h2 {
+            font-size: 1.2rem;
+            color: #00a8cc;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .main-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: #111a28;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #00a8cc;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 20px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3px;
+        }
+
+        .item-role {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #111a28;
+        }
+
+        .item-date {
+            font-size: 0.85rem;
+            color: #718096;
+            font-weight: 500;
+        }
+
+        .item-company {
+            font-weight: 500;
+            color: #00a8cc;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding-left: 5px;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            color: #4a5568;
+        }
+
+        .bullet-list li::before {
+            content: "\f105";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #00a8cc;
+        }
+
+        /* --- ADAPTABILIDAD RESPONSIVE (MÓVILES) --- */
+        @media (max-width: 768px) {
+            .cv-container {
+                flex-direction: column;
+            }
+
+            .left-column, .right-column {
+                width: 100%;
+            }
+
+            .right-column {
+                padding: 25px 20px;
+            }
+
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .item-date {
+                margin-top: 2px;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-container">
+        <!-- COLUMNA LATERAL IZQUIERDA -->
+        <aside class="left-column">
+            <!-- Foto de Perfil -->
+            <div class="profile-frame">
+                <img src="FOTOpERFIL.jpeg" alt="Fotografía de Cristian R. Pochón">
+            </div>
+
+            <!-- Datos de Contacto -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title"><i class="fa-solid fa-address-card"></i> Contacto</h3>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-envelope"></i> cpochon@gmail.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Santa Fé, Capital, Argentina</li>
+                    <li><i class="fa-brands fa-linkedin"></i> linkedin.com/in/cpochon</li>
+                    <li><i class="fa-brands fa-github"></i> github.com/cpochon</li>
+                </ul>
+            </div>
+
+            <!-- Habilidades Técnicas -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title"><i class="fa-solid fa-code"></i> Habilidades</h3>
+                <ul class="skills-list">
+                    <li><i class="fa-solid fa-chevron-right"></i> PHP / Symfony / Twig</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> API REST </li>
+                    <li><i class="fa-solid fa-chevron-right"></i> MySQL / Doctrine ORM</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> HTML5 / CSS3 / JavaScript</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Git </li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Clarion (4GL) </li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Migración de Datos</li>
+                </ul>
+            </div>
+
+            <!-- Idiomas -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title"><i class="fa-solid fa-language"></i> Idiomas</h3>
+                <ul class="skills-list">
+                    <li><i class="fa-solid fa-globe"></i> Español (Nativo)</li>
+                    <li><i class="fa-solid fa-globe"></i> Inglés (Técnico / Intermedio)</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- CONTENEDOR PRINCIPAL DERECHO -->
+        <main class="right-column">
+            <!-- Encabezado -->
+            <header class="header-title">
+                <h1>Cristian R. Pochón</h1>
+                <h2>Ingeniero en Sistemas / Programador Full Stack</h2>
+            </header>
+
+            <!-- Perfil Profesional -->
+            <section class="main-section">
+                <h3 class="section-title"><i class="fa-solid fa-user"></i> Perfil Profesional</h3>
+                <p>
+                    Profesional en Sistemas y Desarrollador Full Stack con amplia experiencia en la arquitectura, migración y mantenimiento de aplicaciones web robustas. Especializado en ecosistemas backend con PHP (Symfony), así como en la estructuración e integración de bases de datos relacionales y optimización de procesos ETL.
+                </p>
+            </section>
+
+            <!-- Experiencia Laboral -->
+            <section class="main-section">
+                <h3 class="section-title"><i class="fa-solid fa-briefcase"></i> Experiencia Laboral</h3>
+
+                <article class="experience-item">
+                    <div class="item-header">
+                        <span class="item-role">Desarrollador Full Stack / Consultor IT</span>
+                        <span class="item-date">2020 - Presente</span>
+                    </div>
+                    <div class="item-company">Proyectos Independientes & Consultoría</div>
+                    <ul class="bullet-list">
+                        <li>Diseño y desarrollo de APIs RESTful utilizando Symfony.</li>
+                        <li>Diseño y ejecución de procesos de migración de datos desde sistemas legados hacia MySQL.</li>
+                        <li>Modelado de bases de datos, creación de entidades y optimización de consultas complejas.</li>
+                       
+                    </ul>
+                </article>
+
+                <article class="experience-item">
+                    <div class="item-header">
+                        <span class="item-role">Ingeniero de Software y Sistemas</span>
+                        <span class="item-date">2015 - 2020</span>
+                    </div>
+                    <div class="item-company">Desarrollo de Software Institucional</div>
+                    <ul class="bullet-list">
+                        <li>Mantenimiento evolutivo y correctivo de aplicaciones web de gestión.</li>
+                        <li>Integración de interfaces dinámicas con HTML, CSS, JavaScript y motor de plantillas Twig.</li>
+                        <li>Automatización de scripts en Python para integración y análisis de datos.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- Educación y Formación -->
+            <section class="main-section">
+                <h3 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Educación</h3>
+
+                <article class="education-item">
+                    <div class="item-header">
+                        <span class="item-role">Licenciatura en Sistemas de Información</span>
+                        <span class="item-date">2007</span>
+                    </div>
+                    <div class="item-company">Universidad Tecnológica Nacional (UTN)</div>
+                </article>
+
+                <article class="education-item">
+                    <div class="item-header">
+                        <span class="item-role">Analista Superior en Sistemas</span>
+                        <span class="item-date">1998</span>
+                    </div>
+                    <div class="item-company">I.S.I.P.E.R. – Oro Verde, Paraná</div>
+                </article>
+
+                <article class="education-item">
+                    <div class="item-header">
+                        <span class="item-role">Analista Programador</span>
+                    </div>
+                    <div class="item-company">I.S.I.P.E.R.</div>
+                </article>
+                <article class="education-item">
+                    <div class="item-header">
+                        <span class="item-role">Técnico Electromecánico</span>
+                    </div>
+                    <div class="item-company">E.N.E.T. N° 1 Gral. Francisco Ramírez</div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
